@@ -5,12 +5,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask.ext.login import UserMixin
 from . import db, login_manager
 
-article_types = {u'开发语言': ['Python', 'Java', 'JavaScript'],
-                 'Linux': [u'Linux成长之路', u'Linux运维实战', 'CentOS', 'Ubuntu'],
-                 u'网络技术': [u'思科网络技术', u'其它'],
-                 u'数据库': ['MySQL', 'Redis'],
-                 u'爱生活，爱自己': [u'生活那些事', u'学校那些事',u'感情那些事'],
-                 u'Web开发': ['Flask', 'Django'],}
+article_types = {u'编程语言': ['Python', 'Java', 'Php'],
+                 u'web前端': ['CSS', 'JavaScript', 'jQuery', 'HTML5'],
+                 u'操作系统': ['Windows', 'Ubuntu'],
+                 u'web开发': ['Flask', 'Django'],
+                 u'校园记忆': [u'校园日常', u'校园基情',u'校园爱情'],
+                 u'手机开发': [u'Android开发', u'iOS开发'],}
 
 
 class User(UserMixin, db.Model):
@@ -75,8 +75,8 @@ class Menu(db.Model):
 
     @staticmethod
     def insert_menus():
-        menus = [u'Web开发', u'数据库', u'网络技术', u'爱生活，爱自己',
-                 u'Linux世界', u'开发语言']
+        menus = [u'编程语言', u'web前端', u'操作系统', u'web开发',
+                 u'校园记忆', u'手机开发']
         for name in menus:
             menu = Menu(name=name)
             db.session.add(menu)
@@ -145,11 +145,12 @@ class ArticleType(db.Model):
 
     @staticmethod
     def insert_articleTypes():
-        articleTypes = ['Python', 'Java', 'JavaScript', 'Django',
-                        'CentOS', 'Ubuntu', 'MySQL', 'Redis',
-                        u'Linux成长之路', u'Linux运维实战', u'其它',
-                        u'思科网络技术', u'生活那些事', u'学校那些事',
-                        u'感情那些事', 'Flask']
+        articleTypes = ['Python', 'Java', 'Php',
+                        'CSS', 'JavaScript', 'jQuery','HTML5', 
+			'Windows','Ubuntu', 
+			'Flask', 'Django',
+			u'校园日常', u'校园基情',u'校园爱情',
+                        u'Android开发', u'iOS开发']
         for name in articleTypes:
             articleType = ArticleType(name=name,
                                       setting=ArticleTypeSetting(name=name))
